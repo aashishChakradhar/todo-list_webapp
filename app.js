@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import todoRoutes from "./routes/todoapp.js";
+import todoRoutes from "./todo-ejs/routes/todoapp.js";
 
 const app = express();
 const PORT = 3000;
@@ -13,11 +13,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 //for view (ejs files)
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "todo-ejs/views"));
 app.use(express.urlencoded({ extended: true }));
 
 //for static files
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "todo-ejs/public")));
 
 // Routes
 app.use("/", todoRoutes);
