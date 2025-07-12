@@ -13,27 +13,29 @@ function AddNote(props) {
   }
 
   return (
-    <div id="add-container">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Add Title"
-          value={title}
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="Take a note..."
-          value={note}
-          onChange={(e) => {
-            setNote(e.target.value);
-          }}
-        />
-        <button type="submit">Add</button>
-      </form>
-    </div>
+    <form id="add-container" onSubmit={handleSubmit}>
+      <input
+        id="title"
+        type="text"
+        placeholder="Add Title"
+        value={title}
+        onChange={(e) => {
+          setTitle(e.target.value);
+        }}
+      />
+      <textarea
+        id="description"
+        type="text-area"
+        placeholder="Take a note..."
+        value={note}
+        onChange={(e) => {
+          setNote(e.target.value);
+        }}
+      />
+      <button type="submit" id="note-button" onClick={handleSubmit}>
+        Add
+      </button>
+    </form>
   );
 }
 export default AddNote;
