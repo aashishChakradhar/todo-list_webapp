@@ -27,8 +27,8 @@ router.get("/notes", (req, res) => {
 router.post("/notes", (req, res) => {
   ensureFile();
   const { title, note } = req.body;
-  if (!title || !note) {
-    return res.status(400).json({ error: "Title and note are required" });
+  if (!title && !note) {
+    return res.status(400).json({ error: "Either title or note is required" });
   }
 
   const existing = JSON.parse(fs.readFileSync(FILE_PATH, "utf8"));
