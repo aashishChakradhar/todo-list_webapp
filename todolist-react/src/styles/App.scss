@@ -1,6 +1,6 @@
 $primary-bg: #fff8ed;
 $secondary-bg: #fca503;
-$primary-border: #cfcfcf;
+$container-bg: #ffffff;
 
 body {
   height: 100%;
@@ -35,7 +35,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 3px solid black;
   border-radius: 14px;
   margin: 4rem;
 }
@@ -47,6 +46,7 @@ body {
   display: flex;
   flex-direction: column;
   box-shadow: 10px 10px 15px grey;
+  background-color: $container-bg;
 }
 #title {
   border: none;
@@ -55,6 +55,7 @@ body {
   padding: 0.8rem 1rem;
   outline: none;
   border-radius: 14px 14px;
+  background: transparent;
 }
 #description {
   display: flex;
@@ -65,6 +66,7 @@ body {
   padding: 0.8rem 1rem;
   outline: none;
   border-radius: 0 0 14px 14px;
+  background: transparent;
 }
 #note-button {
   background-color: $secondary-bg;
@@ -76,9 +78,39 @@ body {
   right: 10%;
   font-weight: 700;
   border: none;
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 #display-container {
-  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   padding: 2rem;
-  width: 89%;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.note-container {
+  background-color: $container-bg;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  word-break: break-word;
+  height: 13rem;
+  width: 11rem;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.title {
+  font-weight: 700;
+}
+.note {
+  overflow: hidden;
 }
