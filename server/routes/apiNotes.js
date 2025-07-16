@@ -2,6 +2,7 @@ import express from "express";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { getCurrentTime } from "../middleware/date.js";
 
 const router = express.Router();
 
@@ -20,7 +21,7 @@ const ensureFile = () => {
 router.get("/notes", (req, res) => {
   ensureFile();
   const data = fs.readFileSync(FILE_PATH, "utf8");
-  res.json(JSON.parse(data));
+  res.json(JSON.parse(data).reverse());
 });
 
 // POST a new note
@@ -32,7 +33,15 @@ router.post("/notes", (req, res) => {
   }
 
   const existing = JSON.parse(fs.readFileSync(FILE_PATH, "utf8"));
-  const newNote = { id: Date.now(), title, note };
+  const addedOn = getCurrentTime();
+  const newNote = {
+    id: Date.now(),
+    title,
+    note,
+    time: addedOn[0],
+    day: addedOn[1],
+    date: addedOn[2],
+  };
   existing.push(newNote);
   fs.writeFileSync(FILE_PATH, JSON.stringify(existing, null, 2));
   res.status(201).json({ message: "Note saved", note: newNote });
